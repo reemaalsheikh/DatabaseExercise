@@ -1,0 +1,98 @@
+#1.Create database named " store ".
+create database storee;
+
+#2.Create table countries.
+create table countries (
+ code int primary key,
+    name varchar(20) unique ,
+    continent_name varchar(20) not null
+);
+
+#3. Create table users.
+create table users(
+    id int primary key ,
+    full_name varchar(20),
+    email varchar(20) unique ,
+    gender char(1)check ( gender='m' or gender='f' ),
+    date_of_birth varchar(15),
+    created_at datetime default (CURRENT_TIMESTAMP),
+    country_code int ,
+    foreign key (country_code) references countries(code)
+);
+
+#4. Create table orders.
+create table orders (
+    id int primary key ,
+    user_id int ,
+    foreign key  (user_id) references users(id),
+    status varchar(6)check (status='start' or status='finish'),
+    created_at datetime default (CURRENT_TIMESTAMP)
+);
+
+#5. Create table order_products. then here
+create table order_products(
+    order_id int,
+    foreign key (order_id) references orders(id),
+
+    product_id int,
+    foreign key (product_id) references products(id),
+    quantity int default 0
+);
+
+#6. Create table products. first run here
+create table products(
+    id int primary key ,
+    name varchar(10) not null ,
+    price int default 0,
+    status varchar(10) check (status='valid' or status='expired'),
+    created_at datetime default (CURRENT_TIMESTAMP)
+);
+
+#1. Add new row to the countries table.
+    insert into countries values (1, 'Japan','Asia');
+    insert into countries values (2, 'Saudi Arabia','Asia');
+    insert into countries values (3, 'Bangkok','Asia');
+
+
+#2. Add new row to the users table.
+    insert into users values (1,'ReemaAlsheikh','Reema@gmail.com','f','08-08-1999','20240605',1);
+    insert into users values (2,'RawanAlsheikh','Rawan@gmail.com','f','25-09-1997','20240605',2);
+    insert into users values (3,'khalidAlansari','khalid@gmail.com','m','08-08-1994','20240605',3);
+
+
+#3. Add new row to the orders table.
+    insert into orders values(1,1,'start','20240608');
+    insert into orders values(2,2,'finish','20240608');
+    insert into orders values(3,3,'start','20240608');
+
+
+#4. Add new row to the products table.
+    insert into products values(1,'ipad',5000,'valid','20240708');
+    insert into products values(2,'laptop',4000,'valid','20240708');
+    insert into products values(3,'tv',7000,'expired','20240708');
+
+
+#5. Add new row to the order_products table.
+   insert into order_products values(1,1,10);
+   insert into order_products values(2,2,20);
+   insert into order_products values(3,3,30);
+
+#6. Update row from countries table.
+    update countries set name='Tokyo' where code  =1;
+    update countries set name='Riyadh' where code =2;
+    update countries set name='Jeddah' where code =3;
+
+
+
+#7. Delete row from products table.
+delete from order_products where product_id =1;
+
+delete from order_products where product_id =2;
+
+delete from order_products where product_id =3;
+
+delete from products where id =1;
+
+delete from products where id =2;
+
+delete from products where id =3;
