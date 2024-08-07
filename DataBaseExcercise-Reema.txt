@@ -55,21 +55,21 @@ create table products(
 
 
 #2. Add new row to the users table.
-    insert into users values (1,'ReemaAlsheikh','Reema@gmail.com','f','08-08-1999','20240605',1);
-    insert into users values (2,'RawanAlsheikh','Rawan@gmail.com','f','25-09-1997','20240605',2);
-    insert into users values (3,'khalidAlansari','khalid@gmail.com','m','08-08-1994','20240605',3);
+    insert into users(id, full_name, email, gender, date_of_birth, country_code) values (1,'ReemaAlsheikh','Reema@gmail.com','f','08-08-1999',1);
+    insert into users(id, full_name, email, gender, date_of_birth, country_code)  values (2,'RawanAlsheikh','Rawan@gmail.com','f','25-09-1997',2);
+    insert into users (id, full_name, email, gender, date_of_birth, country_code) values (3,'khalidAlansari','khalid@gmail.com','m','08-08-1994',3);
 
 
 #3. Add new row to the orders table.
-    insert into orders values(1,1,'start','20240608');
-    insert into orders values(2,2,'finish','20240608');
-    insert into orders values(3,3,'start','20240608');
+    insert into orders(id, user_id, status) values(1,1,'start');
+    insert into orders (id, user_id, status)values(2,2,'finish');
+    insert into orders (id, user_id, status)values(3,3,'start');
 
 
 #4. Add new row to the products table.
-    insert into products values(1,'ipad',5000,'valid','20240708');
-    insert into products values(2,'laptop',4000,'valid','20240708');
-    insert into products values(3,'tv',7000,'expired','20240708');
+    insert into products (id, name, price, status)values(1,'ipad',5000,'valid');
+    insert into products (id, name, price, status) values(2,'laptop',4000,'valid');
+    insert into products (id, name, price, status) values(3,'tv',7000,'expired');
 
 
 #5. Add new row to the order_products table.
