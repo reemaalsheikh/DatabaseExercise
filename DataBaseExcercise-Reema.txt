@@ -1,5 +1,5 @@
 #1.Create database named " store ".
-create database storee;
+create database store;
 
 #2.Create table countries.
 create table countries (
